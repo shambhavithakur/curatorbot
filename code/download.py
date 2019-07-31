@@ -6,6 +6,7 @@ from PIL import Image
 import requests
 import shutil
 import json
+from pathlib import Path
 from os import path, listdir
 from sys import exit
 import settings
@@ -19,8 +20,8 @@ def get_json():
     Gets JSON data about a category of paintings from WikiArt, and returns a list of objects containing data specific to each painting
     """
 
-    for page in range(3, 4):
-        data = []
+    for page in range(1, 2):
+        data_list = []
         url = settings.CUSTOM_URL + str(page)
         print(page, "pages processed")
         try:
@@ -28,18 +29,57 @@ def get_json():
                 url, timeout=settings.METADATA_REQUEST_TIMEOUT)
             # json_data = response.json()
             if response.json()['Paintings']:
-                data = response.json()['Paintings']
+                data_list = response.json()['Paintings']
         except requests.exceptions.RequestException as e:
             print(e)
             exit(1)
-    return data
+    return data_list
+
+
+def prune(list):
+    '''
+    Removes list elements whose title variables contains specific words
+    '''
+    items_deleted_from_list = 0
+    word_list = ['sex', 'nude', 'nudist', 'bath', 'lake', 'river', 'sea', 'beach',
+                 'anachronism', 'man and woman', 'couple', 'aphrodite', 'Anadyomene', 'venus', 'proposition', 'romance', 'embarrass', 'embarrassing']
+    for word in word_list:
+        if list:
+            for painting in list:
+                if word in painting["title"].lower():
+                    list.remove(painting)
+                    items_deleted_from_list += 1
+        else:
+            break
+    print(f'{items_deleted_from_list} items deleted')
+    return list
+
+
+def get_list_from_file(text_file):
+    '''
+    If the file exists and is not empty, extracts its elements, adds these elements to a list, and returns the list
+    '''
+    data_list = []
+    file = Path(text_file)
+    if file.is_file() and file.stat().st_size != 0:
+        try:
+            with open(text_file, 'r') as input_file:
+                data_list = json.load(input_file)
+        except Exception as e:
+            print(e)
+            raise e
+    return data_list
 
 
 def save_data(text_file, data_list):
     """
-    Saves the list of objects returned by get_json() as a text file
+    Saves the list of objects returned by get_json() and prune() as a text file
+    If the file already contains items, extends the list with these items and overwrites the file
     """
-    with open(text_file, 'a+') as output_file:
+    existing_list = get_list_from_file(text_file)
+    data_list.extend(existing_list)
+
+    with open(text_file, 'w+') as output_file:
         json.dump(data_list, output_file)
 
 
@@ -122,11 +162,14 @@ def resize_save_images():
                         print(f'Could not resize {image}')
                         count_unresized += 1
 
-                    try:
-                        img.save(resized_image_path, quality=85, optimize=True)
-                        count_saved += 1
-                    except:
-                        print(f'Could not compress {image}. Not saving it.')
+                    if img.size[0] >= 440 and img.size[1] >= 220:
+                        try:
+                            img.save(resized_image_path,
+                                     quality=85, optimize=True)
+                            count_saved += 1
+                        except:
+                            print(
+                                f'Could not compress {image}. Not saving it.')
 
     print(
         f'resized = {count_resized}, unresized = {count_unresized}, saved={count_saved}')
@@ -134,6 +177,7 @@ def resize_save_images():
 
 def main():
     data_list = get_json()
+    data_list = prune(data_list)
     save_data(settings.METADATA_FILE, data_list)
     links = get_image_links(settings.METADATA_FILE)
     download_images(links)
