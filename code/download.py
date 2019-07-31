@@ -19,7 +19,8 @@ def get_json():
     Gets JSON data about a category of paintings from WikiArt, and returns a list of objects containing data specific to each painting
     """
 
-    for page in range(1, 2):
+    for page in range(3, 4):
+        data = []
         url = settings.CUSTOM_URL + str(page)
         print(page, "pages processed")
         try:
