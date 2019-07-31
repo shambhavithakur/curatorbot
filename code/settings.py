@@ -22,8 +22,8 @@ METADATA_REQUEST_TIMEOUT = 2 * 60
 PAINTINGS_REQUEST_TIMEOUT = 5 * 60
 
 # Selects a category of paintings
-choice = randrange(3)
-# choice = 1
+choice = randrange(4)
+# choice = 4
 
 # Builds URLs and pathnames for each available category
 if choice == 0:
@@ -44,6 +44,21 @@ if choice == 2:
     CUSTOM_URL = f"{BASE_URL}{TYPE_MEDIA}{FOLDER_NAME}{JSON_PAGINATION}"
     ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
     METADATA_FILENAME = f'{SHORT_NAME}.txt'
+if choice == 3:
+    FOLDER_NAME = "cloisonnism"
+    SHORT_NAME = "clois"
+    CUSTOM_URL = f"{BASE_URL}{TYPE_STYLE}{FOLDER_NAME}{JSON_PAGINATION}"
+    ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
+    METADATA_FILENAME = f'{SHORT_NAME}.txt'
+if choice == 4:
+    FOLDER_NAME = "cityscape"
+    SHORT_NAME = "city"
+    CUSTOM_URL = f"{BASE_URL}{TYPE_GENRE}{FOLDER_NAME}{JSON_PAGINATION}"
+    ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
+    METADATA_FILENAME = f'{SHORT_NAME}.txt'
 
 # Sets path to the file that will store JSON data downloaded from Wikiart
 METADATA_FILE = f'{ASSET_PATH}{METADATA_FILENAME}'
+
+# print(METADATA_FILE)
+# print(f'{CUSTOM_URL}{str(1)}')

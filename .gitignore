@@ -4,9 +4,11 @@
 *.png
 
 *.txt
+*.ini
 !requirements.txt
 data.py
 
+settings.py
 settings.json
 
 venv
