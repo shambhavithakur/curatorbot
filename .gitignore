@@ -1,0 +1,13 @@
+# Images
+*.jpg
+*.jpeg
+*.png
+
+*.txt
+!requirements.txt
+data.py
+
+settings.json
+
+venv
+__pycache__
