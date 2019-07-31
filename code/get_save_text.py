@@ -1,4 +1,5 @@
 from pathlib import Path
+from re import sub
 
 
 def get_data(filepath):
@@ -28,3 +29,16 @@ def save_data(filepath, list):
         for item in list:
             if item not in existing_data:
                 file.write(f'{item}\n')
+
+
+def capitalize(match):
+    return match.group(0).upper()
+
+
+def convert_for_hashtag(text):
+    result = sub(r"(^|[-'.\\\s]+)[\w]", capitalize, text)
+    result = sub(r"[-'.\\\s]+", "", result)
+    return result
+
+
+# print(convert_for_hashtag('cubo-exp ord\t.efg'))

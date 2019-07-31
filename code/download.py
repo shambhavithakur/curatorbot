@@ -1,5 +1,5 @@
 """
-This code queries WikiArt and returns data from the category that is chosen in settings.py
+This code queries WikiArt and returns data from the category that is chosen by the build_paths() functions.
 """
 
 from PIL import Image
@@ -7,12 +7,17 @@ import requests
 import shutil
 import json
 from pathlib import Path
+from random import randrange
 from os import path, listdir
 from sys import exit
 import settings
 
 # from PIL import ImageFile
 # ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+number = randrange(9)
+FOLDER_NAME, CUSTOM_URL, ASSET_PATH, METADATA_FILE = settings.build_paths(
+    number)
 
 
 def get_json():
@@ -22,7 +27,7 @@ def get_json():
 
     for page in range(1, 2):
         data_list = []
-        url = settings.CUSTOM_URL + str(page)
+        url = CUSTOM_URL + str(page)
         print(page, "pages processed")
         try:
             response = requests.get(
@@ -106,7 +111,7 @@ def download_images(links):
     count = 0
     for link in links:
         image_name = link.rsplit('/', 1)[1]
-        file_location = f'{settings.ASSET_PATH}img_large\\{image_name}'
+        file_location = f'{ASSET_PATH}img_large\\{image_name}'
 
         if image_name.endswith(('.png', '.jpg', '.jpeg')):
             if not path.isfile(file_location):
@@ -130,8 +135,8 @@ def resize_save_images():
     Retrieves names of image files from a specified folder, resizes and compresses the image files and saves them in a separate folder
     """
 
-    folder_path = f'{settings.ASSET_PATH}img_large\\'
-    resized_folder_path = f'{settings.ASSET_PATH}img\\'
+    folder_path = f'{ASSET_PATH}img_large\\'
+    resized_folder_path = f'{ASSET_PATH}img\\'
     images = listdir(folder_path)
     max_size = 100
 
@@ -148,9 +153,9 @@ def resize_save_images():
                 if not path.isfile(resized_image_path):
                     img = Image.open(image_path)
                     try:
-                        if img.size[0] > 500:
+                        if img.size[0] > 900:
                             if path.getsize(image_path) > (max_size * 1024):
-                                basewidth = 500
+                                basewidth = 900
                                 width_percent = (
                                     basewidth / float(img.size[0]))
                                 horizontal_size = int(
@@ -162,7 +167,7 @@ def resize_save_images():
                         print(f'Could not resize {image}')
                         count_unresized += 1
 
-                    if img.size[0] >= 440 and img.size[1] >= 220:
+                    if img.size[0] >= 440 and img.size[1] >= 440:
                         try:
                             img.save(resized_image_path,
                                      quality=85, optimize=True)
@@ -178,8 +183,8 @@ def resize_save_images():
 def main():
     data_list = get_json()
     data_list = prune(data_list)
-    save_data(settings.METADATA_FILE, data_list)
-    links = get_image_links(settings.METADATA_FILE)
+    save_data(METADATA_FILE, data_list)
+    links = get_image_links(METADATA_FILE)
     download_images(links)
     resize_save_images()
 

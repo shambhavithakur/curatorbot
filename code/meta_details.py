@@ -21,7 +21,8 @@ def get_metadata(text_file):
         artist = unescape(painting['artistName'])
         title = unescape(painting['title'])
         year = unescape(painting['year'])
-        meta_text = [artist, title, year]
+        painting_url = unescape(painting["paintingUrl"])
+        meta_text = [artist, title, year, painting_url]
 
         # Retrieve image name from link to image.
         index = painting['image'].rfind('/')
