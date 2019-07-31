@@ -3,11 +3,13 @@
 *.jpeg
 *.png
 
+.gitignore
 *.txt
 *.ini
 !requirements.txt
 data.py
 
+tweet.py
 settings.py
 settings.json
 
