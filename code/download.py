@@ -47,7 +47,7 @@ def prune(list):
     '''
     items_deleted_from_list = 0
     word_list = ['sex', 'nude', 'nudist', 'bath', 'lake', 'river', 'sea', 'beach',
-                 'anachronism', 'man and woman', 'couple', 'aphrodite', 'Anadyomene', 'venus', 'proposition', 'romance', 'embarrass', 'embarrassing']
+                 'anachronism', 'man and woman', 'couple', 'aphrodite', 'anadyomene', 'venus', 'proposition', 'romance', 'embarrass', 'embarrassing']
     for word in word_list:
         if list:
             for painting in list:
