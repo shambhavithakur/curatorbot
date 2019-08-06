@@ -1,11 +1,24 @@
 """
-Puts together URLs and pathnames, which are used by other files to download, save, and retrieve painting data and tweet paintings
+Accesses the keys and builds the URLs and pathnames that are used by other files to download, save, and retrieve painting data and tweet paintings
+
+Example URLs
+  https://www.wikiart.org/en/paintings-by-media/terracotta?json=2&page=1
+  http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=claude-monet&json=2
 """
 
-# Example URLs
-# https://www.wikiart.org/en/paintings-by-media/terracotta?json=2&page=1
-# http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=claude-monet&json=2
+# Initializes keys
+OAUTH_TOKEN = ''
+OAUTH_SECRET = ''
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
 
+# Gets keys
+try:
+    from keys import *
+except Exception:
+    pass
+
+# Defines basic paths
 BASE_URL = "https://www.wikiart.org/en/"
 ARTIST_URL = "http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl={}&json=2"
 # Specifies local folder path as per OS requirements
