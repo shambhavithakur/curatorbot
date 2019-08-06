@@ -16,18 +16,18 @@ Follow \#CuratorBot [@TheHazelEvans](https://twitter.com/TheHazelEvans).
 
 ### Prerequisites
 
-To be able to use CuratorBot as intended, you will need a [Twitter](https://twitter.com/) account, a [Twitter developer](https://developer.twitter.com/en/apply-for-access.html) account, and [access tokens](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html). You should also have Python 3 installed on your computer and have access to a Windows Command Processor or Bash shell. The commands mentioned in the Installation section below were run in the Git Bash shell on a Windows 10 computer.
+To be able to use CuratorBot as intended, you will need a [Twitter user](https://twitter.com/) account, a [Twitter developer](https://developer.twitter.com/en/apply-for-access.html) account, and [authentication tokens](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html). You should also have Python 3 installed on your computer and have access to a Windows Command Processor or Bash shell. The commands mentioned in the Installation section below were run in a Git Bash shell on a Windows 10 computer.
 
 Although it is not necessary, I recommend that you use a code editor, such as [Microsoft Visual Studio Code](https://code.visualstudio.com/), or VS Code, to view and edit the CuratorBot code. A code editor offes various features, including error identification, error correction, and code formatting, that can simplify the coding process.
 
-### Installtion
+### Installation
 
 1. On your computer, browse to a folder where you want to save the CuratorBot project.
 
-2. Run the following code to clone the CuratorBot project into the folder or get the [zipped version](https://github.com/tshambhavi/curatorbot/archive/master.zip) of the project.
+2. Run the following command to clone the CuratorBot project in the folder, or get the [zipped version](https://github.com/tshambhavi/curatorbot/archive/master.zip) of the project.
 
     ```bash
-    https://github.com/tshambhavi/curatorbot.git
+    git clone https://github.com/tshambhavi/curatorbot.git
     ```
   
     <b>Note</b>: I used Git Bash to run the commands.
@@ -38,7 +38,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     python -m venv myvenv
     ```
   
-    In command above, `myvenv` is the name of the virtual environment. You can use any other name that makes sense to you.
+    In the command above, myvenv is the name of the virtual environment. You can use any other name that makes sense to&nbsp;you.
   
 3. Activate the virtual environment by running the following command:
 
@@ -46,13 +46,15 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     source myvenv/Scripts/activate
     ```
   
-    You should now see `(myvenv)` above the command-prompt path.
+    You should now see (myvenv) above the command-prompt&nbsp;path.
 
-4. Open the kyes.py file, which is in the code folder, and add your Twitter access tokens.
+4. Open the kyes.py file, which is in the code folder, and add your Twitter authentication tokens to the&nbsp;file.
 
-5. In the settings.py file, edit the paths to your local folders if required.
+5. In the settings.py file, edit the paths to your local folders, if required. You can also search for and add details about other WikiArt artists to the&nbsp;file.
 
-6. In the tweet.py file, edit the number of paintings you want to tweet during a session and the gap between each download.
+6. In download.py, in the get_json() function, edit the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
+
+6. In the tweet.py file, you could edit the number of paintings you want to tweet during a session and the gap between each download.
 
 ### Use
 
@@ -63,10 +65,10 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     ```
   
  2. To tweet paintings, run the following command:
- 
-   ```bash
-   python tweet.py
-   ```
+
+       ```bash
+       python tweet.py
+       ```
 
 ### References:
 
