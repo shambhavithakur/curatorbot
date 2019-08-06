@@ -11,7 +11,8 @@ TYPE_STYLE = 'paintings-by-style/'
 TYPE_GENRE = 'paintings-by-genre/'
 TYPE_MEDIA = 'paintings-by-media/'
 JSON_PAGINATION = "?json=2&page="
-TOP_LEVEL_PATH = 'F:\\projects\\python_projects\\curator_bot\\code\\'
+# Specifies a path as per OS requirements
+TOP_LEVEL_PATH = 'C:\\projects\\curator_bot\\code\\'
 
 # Specifies timeout settings for downloads from Wikiart
 # https://github.com/lucasdavid/wikiart/blob/master/wikiart/settings.py
