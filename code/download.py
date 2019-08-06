@@ -23,7 +23,7 @@ class WikiDownloader():
     
     def __init__(self, number):
         '''
-        Uses the builds_paths() function in the settings file to select an artist and generate paths and URLs pertaining to the artist
+        Uses the build_paths() function in the settings file to select an artist and generate paths and URLs pertaining to the artist
         '''
         self.FOLDER_NAME, self.CUSTOM_URL, self.ASSET_PATH, self.METADATA_FILE = settings.build_paths(
             number)
