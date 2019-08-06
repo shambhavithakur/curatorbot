@@ -16,36 +16,37 @@ Follow \#CuratorBot [@TheHazelEvans](https://twitter.com/TheHazelEvans).
 
 ### Prerequisites
 
-To be able to use CuratorBot as intended, you will need a [Twitter account](https://twitter.com/), a [Twitter developer account] (https://developer.twitter.com/en/apply-for-access.html), and [access tokens](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html). You also need Python 3 installed on your computer and access to a Windows Command Processor or Bash shell. The commands mentioned in the Installation section below were run in the Git Bash shell on a Windows 10 computer.
+To be able to use CuratorBot as intended, you will need a [Twitter](https://twitter.com/) account, a [Twitter developer](https://developer.twitter.com/en/apply-for-access.html) account, and [access tokens](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html). You should also have Python 3 installed on your computer and have access to a Windows Command Processor or Bash shell. The commands mentioned in the Installation section below were run in the Git Bash shell on a Windows 10 computer.
 
-Although it is not necessary, I recommend that you use a code editor, such as [Microsoft Visual Studio Code](https://code.visualstudio.com/),  or VS Code, to view and edit the CuratorBot code. A code editor offes features, including error identification, error correction, and code formatting, that can simplify the coding process.
+Although it is not necessary, I recommend that you use a code editor, such as [Microsoft Visual Studio Code](https://code.visualstudio.com/), or VS Code, to view and edit the CuratorBot code. A code editor offes various features, including error identification, error correction, and code formatting, that can simplify the coding process.
 
 ### Installtion
-1. On yoru computer, browse to a folder where you want to save the CuratorBot project.
+
+1. On your computer, browse to a folder where you want to save the CuratorBot project.
 
 2. Run the following code to clone the CuratorBot project into the folder or get the [zipped version](https://github.com/tshambhavi/curatorbot/archive/master.zip) of the project.
 
-  ```bash
-  https://github.com/tshambhavi/curatorbot.git
-  ```
+    ```bash
+    https://github.com/tshambhavi/curatorbot.git
+    ```
   
-  <b>Note</b>: I used Git Bash to run the commands.
+    <b>Note</b>: I used Git Bash to run the commands.
   
 2. CD into the curatorbot folder, and run the following command to create a virtual environment. 
 
-  ```bash
-  python -m venv myvenv
-  ```
+    ```bash
+    python -m venv myvenv
+    ```
   
-  In command above, `myvenv` is the name of the virtual environment. You can use any other name that makes sense to you.
+    In command above, `myvenv` is the name of the virtual environment. You can use any other name that makes sense to you.
   
 3. Activate the virtual environment by running the following command:
 
-  ```bash
-  source myvenv/Scripts/activate
-  ```
+    ```bash
+    source myvenv/Scripts/activate
+    ```
   
-  You should now see `(myvenv)` above the command-prompt path.
+    You should now see `(myvenv)` above the command-prompt path.
 
 4. Open the kyes.py file, which is in the code folder, and add your Twitter access tokens.
 
@@ -53,17 +54,19 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
 6. In the tweet.py file, edit the number of paintings you want to tweet during a session and the gap between each download.
 
-6. Make sure you are in the code folder and then run the following command to download meta data and paintings from WikiArt.
+### Use
 
-  ```bash
-  python download.py
-  ```
+1. Make sure you are in the code folder and then run the following command to download meta data and paintings from WikiArt.
+
+    ```bash
+    python download.py
+    ```
   
- 6. To tweet paintings, run the following command:
+ 2. To tweet paintings, run the following command:
  
- ```bash
- python tweet.py
- ```
+   ```bash
+   python tweet.py
+   ```
 
 ### References:
 
