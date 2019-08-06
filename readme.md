@@ -32,7 +32,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
   
     <b>Note</b>: I used Git Bash to run the commands.
   
-2. CD into the curatorbot folder, and run the following command to create a virtual environment. 
+2. CD into the curatorbot folder, and run the following command to create a virtual environment: 
 
     ```bash
     python -m venv myvenv
@@ -52,22 +52,22 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
 5. In the settings.py file, edit the paths to your local folders, if required. You can also search for and add details about other WikiArt artists to the&nbsp;file.
 
-6. In download.py, in the get_json() function, edit the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
+6. In download.py, in the get_json() function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
 
-6. In the tweet.py file, you could edit the number of paintings you want to tweet during a session and the gap between each download.
+6. In the tweet.py file, you could change the number of paintings you want to tweet during a session and the gap between each download.
 
 ### Use
 
-1. Make sure you are in the code folder and then run the following command to download meta data and paintings from WikiArt.
+1. In Bash, if you are in the curatorbot folder, run the following command to download meta data and paintings from WikiArt. If you are in the code folder, you can omit the 'code/' part.
 
     ```bash
-    python download.py
+    python code/download.py
     ```
   
- 2. To tweet paintings, run the following command:
+ 2. To tweet paintings, run the following command from the curatorbot folder in Bash:
 
        ```bash
-       python tweet.py
+       python code/tweet.py
        ```
 
 ### References:
