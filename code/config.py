@@ -8,8 +8,8 @@ logger = logging.getLogger()
 def create_api():
     auth = tweepy.OAuthHandler(
         data.CONSUMER_KEY, settings.CONSUMER_SECRET)
-    auth.set_access_token(settings.OAUTH_TOKEN,
-                          settings.OAUTH_SECRET)
+    auth.set_access_token(settings.ACCESS_TOKEN,
+                          settings.ACCESS_SECRET)
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
     try:
