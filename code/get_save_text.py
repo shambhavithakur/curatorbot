@@ -41,4 +41,3 @@ def convert_for_hashtag(text):
     return result
 
 
-# print(convert_for_hashtag('cubo-exp ord\t.efg'))
