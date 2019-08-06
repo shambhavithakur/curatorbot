@@ -7,8 +7,8 @@ Example URLs
 """
 
 # Initializes keys
-OAUTH_TOKEN = ''
-OAUTH_SECRET = ''
+ACCESS_TOKEN = ''
+ACCESS_SECRET = ''
 CONSUMER_KEY = ''
 CONSUMER_SECRET = ''
 
