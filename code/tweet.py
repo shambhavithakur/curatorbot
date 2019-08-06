@@ -1,8 +1,10 @@
-from time import sleep, time
 import tweet_data
-from tweepy import TweepError
+from sys import exit
 from config import create_api
 from get_save_text import save_data
+
+from tweepy import TweepError
+from time import time, sleep, strftime, gmtime
 
 
 '''
@@ -11,35 +13,68 @@ Tweets paintings and related metadata
 
 
 def send_tweet():
+    
+    # Retrieves data for the tweet
     image_name, image_path, status_text, tweeted_images_file_path = tweet_data.prepare_tweet_data()
 
-    # Sends tweet
-    api = create_api()
+    if image_path != '':
+        # Creates API connection
+        api = create_api()
+        tries = 0
+        success = 0
 
-    try:
-        # Runs Tweepy command
-        api.update_with_media(image_path, status=status_text)
-        # Appends the name of the uploaded image to tweeted_images.txt
-        save_data(tweeted_images_file_path, [image_name])
-        print(f'Uploaded {image_name}...')
-    except TweepError as e:
-        print(e.api_code)
-        print("  .. failed, sleeping for 5 seconds and then trying again")
-        sleep(5)
+        while True:
+            # Makes two attempts to tweet the selected painting
+            # Updates the success variable if the painting is successfully tweeted and returns the variable 
+            # Or returns the initial value of the success variable at the end of the second unsuccessful attempt
+            try:
+                # Runs Tweepy command
+                api.update_with_media(image_path, status=status_text)
+                # Appends the name of the uploaded image to tweeted_images.txt
+                save_data(tweeted_images_file_path, [image_name])
+                print(f'Uploaded {image_name}...')
+                success = 1
+                return success
+            except TweepError as e:
+                print(e.api_code)
+                tries += 1
+
+                if tries == 1:
+                    print(
+                        "  .. failed, sleeping for 5 seconds and then trying again")
+                    sleep(5)
+                else:
+                    success = 0
+                    return success
 
 
-count = 0
-while count < 2:
+# Uses the send_tweet() function to upload five paintings                
+attempts = 0
+images_uploaded = 0
+count_in_text = {1: "One image", 2: "Two images",
+                 3: "Three images", 4: 'Four images', 5: 'Five images'}
 
-    send_tweet()
-    count += 1
+while images_uploaded < 5:
+    attempts += 1
+    # Includes check to exit the while loop after 31 successful or unsuccessful attempts
+    if attempts == 31:
+        print(
+            f'I have made {attempts} to retrieve and upload images. Exiting now.')
+        exit(0)
 
-    if count < 2:
-        print(f'Will upload another in ...')
-
-        for i in range(1800, -1, -1):
-            start = time()
-            print(f'\t{i} seconds...', end='\r')
-            sleep(1.0 - ((time() - start) % 1.0))
-    else:
-        print(f"Uploaded the required {count} files...")
+    # Runs send_tweet() to send a tweet
+    success = send_tweet()
+    if success == 1:
+        images_uploaded += 1
+        if images_uploaded < 5:
+            print(
+                f'{count_in_text[images_uploaded]} uploaded until now...Will upload another in ...')
+            
+            # Uses a timer to maintain a gap of 1 hour between uploads
+            for i in range(3600, -1, -1):
+                start = time()
+                print(f'\t{strftime("%H:%M:%S", gmtime(i))}', end='\r')
+                sleep(1.0 - ((time() - start) % 1.0))
+        else:
+            print(
+                f"I uploaded {count_in_text[images_uploaded].lower()} in this session. It was fun. I will be happy to work with you again.")
