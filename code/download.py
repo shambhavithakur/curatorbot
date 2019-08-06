@@ -54,9 +54,14 @@ class WikiDownloader():
         index_slash = image_url.rfind('/')
         image_name = image_url[index_slash + 1:]
 
-        index_dot = image_name.rfind('.')
-        image_name_minus_ext = image_name[:index_dot]
-        painting_url = f'''/en/{artist_url}/{image_name_minus_ext}'''
+        index_paren = image_name.find('(')
+        if index_paren != -1:
+            image_name_minus_paren = image_name[:index_paren]
+            painting_url = f'''/en/{artist_url}/{image_name_minus_paren}'''
+        else:
+            index_dot = image_name.rfind('.')
+            image_name_minus_ext = image_name[:index_dot]
+            painting_url = f'''/en/{artist_url}/{image_name_minus_ext}'''
 
         meta_text = [title, artist, year, painting_url, image_url]
 
