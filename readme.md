@@ -18,7 +18,7 @@ Follow \#CuratorBot [@TheHazelEvans](https://twitter.com/TheHazelEvans).
 
 To be able to use CuratorBot as intended, you will need a [Twitter user](https://twitter.com/) account, a [Twitter developer](https://developer.twitter.com/en/apply-for-access.html) account, and [authentication tokens](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html). You should also have Python 3 installed on your computer and have access to a Windows Command Processor or Bash shell. The commands mentioned in the Installation section below were run in a Git Bash shell on a Windows 10 computer.
 
-Although it is not necessary, I recommend that you use a code editor, such as [Microsoft Visual Studio Code](https://code.visualstudio.com/), or VS Code, to view and edit the CuratorBot code. A code editor offes various features, including error identification, error correction, and code formatting, that can simplify the coding process.
+Although it is not necessary, I recommend that you use a code editor, such as [Microsoft Visual Studio Code](https://code.visualstudio.com/), or VS Code, to view and edit the CuratorBot code. A code editor offers various features, including error identification, error correction, and code formatting, that can simplify the coding process.
 
 ### Installation
 
