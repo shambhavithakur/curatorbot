@@ -22,7 +22,7 @@ except Exception:
 BASE_URL = "https://www.wikiart.org/en/"
 ARTIST_URL = "http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl={}&json=2"
 # Specifies local folder path as per OS requirements
-TOP_LEVEL_PATH = 'C:\\projects\\curator_bot\\code\\'
+TOP_LEVEL_PATH = 'C:\\projects\\curatorbot\\code\\'
 
 # Specifies timeout settings for downloads from Wikiart
 # https://github.com/lucasdavid/wikiart/blob/master/wikiart/settings.py
