@@ -46,7 +46,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     source myvenv/Scripts/activate
     ```
   
-    You should now see (myvenv) above the command-prompt&nbsp;path.
+    You should now see `(myvenv)` above the command-prompt&nbsp;path.
     
 4. To install the external modules that have been used in the project, make sure you are in the curatorbot folder and myvenv is active. Then, run the following command:
 
@@ -54,7 +54,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     pip install -r requirements.txt
     ```
 
-4. Open the kyes.py file, which is in the code folder, and add your Twitter authentication tokens to the&nbsp;file.
+4. Open the keys.py file, which is in the code folder, and add your Twitter authentication tokens to the&nbsp;file.
 
 5. In the settings.py file, edit the paths to your local folders, if required. You can also search for and add details about other WikiArt artists to the&nbsp;file.
 
