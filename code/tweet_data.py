@@ -34,6 +34,8 @@ def prepare_tweet_data():
     selected_metadata = choice(list(meta_dict.items()))
 
     title = selected_metadata[1][0]
+    if len(title) < 4:
+        title = "Another Painting"
     image_name = selected_metadata[0]
     artist = selected_metadata[1][1]
     year = selected_metadata[1][2]
@@ -55,11 +57,18 @@ def prepare_tweet_data():
 
         # Generates URL of image
         url = f"https://www.wikiart.org{painting_url}"
+        
+        # Returns a blank url if the link is broken
+        response = requests.head(url)
+        if response.status_code < 400:
+            url = '  ' + url
+        else:
+            url = ''
 
         # Converts the folder name for use as a hashtag
         folder_name = convert_for_hashtag(FOLDER_NAME)
 
         # Defines status text for tweet
-        status_text = f"{title}\n{artist}, {year}\n\n#WikiArt #{folder_name} #CuratorBot {url}"
+        status_text = f"{title}\n{artist}, {year}\n\n#WikiArt #{folder_name} #CuratorBot{url}"
 
     return image_name, image_path, status_text, tweeted_images_file_path
