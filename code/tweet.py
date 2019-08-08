@@ -11,11 +11,13 @@ from time import time, sleep, strftime, gmtime
 Tweets paintings and related metadata
 '''
 
+
 def get_latest_tweet_id(api):
     '''Gets tweet id, which is used to check whether a tweet was successful'''
     tweets = api.user_timeline(count=1)
     tweet_id = [tweet.id for tweet in tweets][0]
     return tweet_id
+
 
 def send_tweet():
     '''
@@ -30,25 +32,15 @@ def send_tweet():
         success = 0
         tweet_id_before = get_latest_tweet_id(api)
 
-        tries = 2
-        while tries > 0:
-            # Makes two attempts to tweet the selected painting
-            # If a tweet was made without error, uses the id of the latest tweet to check whether the attempt really was successful, 
-            # updates the success variable, and returns the variable 
-            # Or returns the initial value of the success variable at the end of the second unsuccessful attempt
-            try:
-                # Runs Tweepy command
-                api.update_with_media(image_path, status=status_text)
-                # Appends the name of the uploaded image to tweeted_images.txt
-                save_data(tweeted_images_file_path, [image_name])
-                tries = 0
-            except (Exception, TweepError) as e:
-                tries -= 1
-                if e and tries == 1:
-                    print(e)
-                    print(
-                        "  .. failed, sleeping for 5 seconds and then trying again")
-                    sleep(5)
+        # If the tweet was made without error, uses the id of the latest tweet to check whether the attempt really was successful,
+        # updates the success variable, and returns the variable
+        try:
+            # Runs Tweepy command
+            api.update_with_media(image_path, status=status_text)
+            # Appends the name of the uploaded image to tweeted_images.txt
+            save_data(tweeted_images_file_path, [image_name])
+        except (Exception, TweepError) as e:
+            print(e)
 
         tweet_id_after = get_latest_tweet_id(api)
         if tweet_id_after and tweet_id_before != tweet_id_after:
@@ -56,7 +48,8 @@ def send_tweet():
             success = 1
         return success
 
-# Uses the send_tweet() function to upload five paintings 
+
+# Uses the send_tweet() function to upload five paintings
 attempts = 0
 images_uploaded = 0
 count_in_text = {1: "One image", 2: "Two images",
@@ -86,4 +79,3 @@ while images_uploaded < 5:
         else:
             print(
                 f"I uploaded {count_in_text[images_uploaded].lower()} in this session. It was fun. I will be happy to work with you again.")
-
