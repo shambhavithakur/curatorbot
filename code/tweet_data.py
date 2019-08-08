@@ -1,3 +1,4 @@
+import requests
 from pathlib import Path
 from random import choice, randrange
 
