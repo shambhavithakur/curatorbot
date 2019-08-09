@@ -71,7 +71,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
     In the code above, the FOLDER_NAME value is the artist's full name, lowercased and joined by hyphens. You can obtain the name from the WikiArt website. The SHORT_NAME variable should ideally be the artist's last name in lowercase. 
 
-    Once you have chosen the SHORT_NAME, make sure that you add a folder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And to the SHORT_NAME folder—shishkin, in this example—add folders named img and img_large.
+    Once you have chosen the SHORT_NAME, make sure that you add a folder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And to the SHORT_NAME folder, add folders named img and img_large.
 
 6. In download.py, in the get_json() function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
 
