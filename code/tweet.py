@@ -41,6 +41,7 @@ def send_tweet():
             save_data(tweeted_images_file_path, [image_name])
         except (Exception, TweepError) as e:
             print(e)
+            sleep(60 * 2)
 
         tweet_id_after = get_latest_tweet_id(api)
         if tweet_id_after and tweet_id_before != tweet_id_after:
