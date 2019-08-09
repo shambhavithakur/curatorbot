@@ -33,29 +33,22 @@ def build_paths(number):
     if number == 0:
         FOLDER_NAME = "claude-monet"
         SHORT_NAME = "monet"
-        CUSTOM_URL = ARTIST_URL.format(FOLDER_NAME)
-        ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
-        METADATA_FILENAME = f'{SHORT_NAME}.txt'
-        print(
-            f"{''.center(30, '=')}\n{FOLDER_NAME.center(30)}\n{''.center(30, '=')}\n")
     if number == 1:
         FOLDER_NAME = "auguste-renoir"
         SHORT_NAME = "renoir"
-        CUSTOM_URL = ARTIST_URL.format(FOLDER_NAME)
-        ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
-        METADATA_FILENAME = f'{SHORT_NAME}.txt'
-        print(
-            f"{''.center(30, '=')}\n{FOLDER_NAME.center(30)}\n{''.center(30, '=')}\n")
     if number == 2:
         FOLDER_NAME = "konstantin-yuon"
         SHORT_NAME = "yuon"
-        CUSTOM_URL = ARTIST_URL.format(FOLDER_NAME)
-        ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
-        METADATA_FILENAME = f'{SHORT_NAME}.txt'
-        print(
-            f"{''.center(30, '=')}\n{FOLDER_NAME.center(30)}\n{''.center(30, '=')}\n")
+    
+    # Builds the relevant URLs, the path to the folder where images will be downloaded, 
+    # and the name of the file that will store JSON data downloaded from Wikiart
+    CUSTOM_URL = ARTIST_URL.format(FOLDER_NAME)
+    ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
+    METADATA_FILENAME = f'{SHORT_NAME}.txt'
+    print(
+        f"{''.center(30, '=')}\n{FOLDER_NAME.center(30)}\n{''.center(30, '=')}\n")
 
-    # Sets path to the file that will store JSON data downloaded from Wikiart
+    # Sets path to the file that will store the JSON data 
     METADATA_FILE = f'{ASSET_PATH}{METADATA_FILENAME}'
 
     return FOLDER_NAME, CUSTOM_URL, ASSET_PATH, METADATA_FILE
