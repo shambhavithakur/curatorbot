@@ -64,9 +64,6 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     if number == 3:
         FOLDER_NAME = "ivan-shishkin"
         SHORT_NAME = "shishkin"
-        CUSTOM_URL = ARTIST_URL.format(FOLDER_NAME)
-        ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
-        METADATA_FILENAME = f'{SHORT_NAME}.txt'
     ```
 
     In the code above, the FOLDER_NAME value is the artist's full name, lowercased and joined by hyphens. You can obtain the name from the WikiArt website. The SHORT_NAME variable should ideally be the artist's last name in lowercase. 
