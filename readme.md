@@ -58,7 +58,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
 5. In the settings.py file, edit the path assigned to the TOP_LEVEL_PATH variable, if required. 
 
-You can also add details about other WikiArt artists to the build_paths function in the&nbsp;file. For example, to obtain Ivan Shishkin's paintings, append the following chunk of code to the build_paths defintion. 
+    Aside from editing TOP_LEVEL_PATH, you can also add details about other WikiArt artists to the build_paths function in settings.py. For example, to obtain Ivan Shishkin's paintings, append the following chunk of code to the build_paths defintion. 
 
     ```python
     if number == 4:
@@ -69,9 +69,9 @@ You can also add details about other WikiArt artists to the build_paths function
         METADATA_FILENAME = f'{SHORT_NAME}.txt'
     ```
 
-In the code above, the FOLDER_NAME value is the artist's full name, lowercased and joined by hyphens. You can obtain the name from the WikiArt website. You can assign any name you want to the SHORT_NAME variable. 
+    In the code above, the FOLDER_NAME value is the artist's full name, lowercased and joined by hyphens. You can obtain the name from the WikiArt website. The SHORT_NAME variable should ideally be the artist's last name in lowercase. 
 
-Once you have chose the SHORT_NAME, make sure that you add a subfolder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And in the SHORT_NAME folder—shishkin, in this example—add folders named img and img_large.
+    Once you have chose the SHORT_NAME, make sure that you add a subfolder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And in the SHORT_NAME folder—shishkin, in this example—add folders named img and img_large.
 
 6. In download.py, in the get_json() function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
 
