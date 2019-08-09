@@ -56,7 +56,22 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
 4. Open the keys.py file, which is in the code folder, and add your Twitter authentication tokens to the&nbsp;file.
 
-5. In the settings.py file, edit the paths to your local folders, if required. You can also search for and add details about other WikiArt artists to the&nbsp;file.
+5. In the settings.py file, edit the path assigned to the TOP_LEVEL_PATH variable, if required. 
+
+You can also add details about other WikiArt artists to the build_paths function in the&nbsp;file. For example, to obtain Ivan Shishkin's paintings, append the following chunk of code to the build_paths defintion. 
+
+    ```python
+    if number == 4:
+        FOLDER_NAME = "ivan-shishkin"
+        SHORT_NAME = "shishkin"
+        CUSTOM_URL = ARTIST_URL.format(FOLDER_NAME)
+        ASSET_PATH = f'{TOP_LEVEL_PATH}assets\\wiki\\{SHORT_NAME}\\'
+        METADATA_FILENAME = f'{SHORT_NAME}.txt'
+    ```
+
+In the code above, the FOLDER_NAME value is the artist's full name, lowercased and joined by hyphens. You can obtain the name from the WikiArt website. You can assign any name you want to the SHORT_NAME variable. 
+
+Once you have chose the SHORT_NAME, make sure that you add a subfolder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And in the SHORT_NAME folder—shishkin, in this example—add folders named img and img_large.
 
 6. In download.py, in the get_json() function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
 
