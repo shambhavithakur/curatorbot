@@ -23,7 +23,7 @@ def prepare_tweet_data():
 
     # Selects a category of paintings
     # The upperlimit in randrange is not inclusive
-    number = randrange(4)
+    number = randrange(3)
 
     FOLDER_NAME, CUSTOM_URL, ASSET_PATH, METADATA_FILE = settings.build_paths(
         number)
