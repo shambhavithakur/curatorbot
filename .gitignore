@@ -3,15 +3,11 @@
 *.jpeg
 *.png
 
-.gitignore
 *.txt
 *.ini
 !requirements.txt
-data.py
+keys.py
 
-tweet.py
-settings.py
-settings.json
-
-venv
+myvenv
 __pycache__
+*.py[cod]
