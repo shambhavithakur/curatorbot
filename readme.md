@@ -54,9 +54,9 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     pip install -r requirements.txt
     ```
 
-4. Open the keys.py file, which is in the code folder, and add your Twitter authentication tokens to the&nbsp;file.
+5. Open the keys.py file, which is in the code folder, and add your Twitter authentication tokens to the&nbsp;file.
 
-5. In the settings.py file, edit the path assigned to the TOP_LEVEL_PATH variable, if required. 
+6. In the settings.py file, edit the path assigned to the TOP_LEVEL_PATH variable, if required. 
 
     Aside from editing TOP_LEVEL_PATH in settings.py, you can also add details about other WikiArt artists to the build_paths function in the file. For example, to obtain Ivan Shishkin's paintings, append the following chunk of code to the build_paths defintion. 
 
@@ -70,9 +70,16 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
     Once you have chosen the SHORT_NAME, make sure that you add a folder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And to the SHORT_NAME folder, add folders named img and img_large.
 
-6. In download.py, in the get_json() function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
+7. In download.py, in the get_json function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
 
-6. In the tweet.py file, you could change the number of paintings you want to tweet during a session and the gap between each download.
+8. In tweet_data.py, in the prepare_tweet_data function, edit the following code according to the number of artists you have added to settings.py. 
+
+    ```python
+    number = randrange(3)
+    ```
+    For example, if you have added four artists, ranging from 0 to 3, replace `randrange(3)` with `randrange(4)`. The randrange function will then randomly select a number from 0 through 3 (inclusive), and the tweet_data.py function will use this number to decide which artist's painting should be tweeted.
+
+9. In the tweet.py file, you could change the number of paintings you want to tweet during a session and the gap between each download.
 
 ### Use
 
