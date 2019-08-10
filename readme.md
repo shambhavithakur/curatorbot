@@ -46,7 +46,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
     source myvenv/Scripts/activate
     ```
   
-    You should now see `(myvenv)` above the command-prompt&nbsp;path.
+    You should now see `(myvenv)` above the command&nbsp;prompt.
     
 4. To install the external modules that have been used in the project, make sure you are in the curatorbot folder and myvenv is active. Then, run the following command:
 
