@@ -234,8 +234,7 @@ class WikiDownloader():
 
 
 def main():
-    list = [0, 1, 2]
-    for number in list:
+    for number in range(3):
         downloader = WikiDownloader(number)
         metadata_file = downloader.get_paths()
         data_list = downloader.get_json()
