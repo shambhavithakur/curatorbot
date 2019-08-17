@@ -70,7 +70,7 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
     Once you have chosen the SHORT_NAME, make sure that you add a folder bearing the SHORT_NAME to the curatorbot/code/assets/wiki folder—for example, curatorbot/code/assets/wiki/shishkin. And to the SHORT_NAME folder, add folders named img and img_large.
 
-7. In download.py, in the get_json function, change the number of paintings you want to download per artist. In the main() function, edit the list variable according to the number of artists you have in settings.py.
+7. In download.py, in the get_json function, change the number of paintings you want to download per artist. In the main() function, edit the range—`for number in range(3)`—according to the number of artists you have in settings.py.
 
 8. In tweet_data.py, in the prepare_tweet_data function, edit the following code according to the number of artists you have added to settings.py. 
 
