@@ -58,12 +58,12 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
 6. In the settings.py file, edit the path assigned to the TOP_LEVEL_PATH variable, if required. 
 
-    Aside from editing TOP_LEVEL_PATH in settings.py, you can also add details about other WikiArt artists to the build_paths function in the file. For example, to obtain Ivan Shishkin's paintings, append the following chunk of code to the build_paths defintion. 
+    Aside from editing TOP_LEVEL_PATH in settings.py, you can also append details about other WikiArt artists to the build_paths function in the file. For example, to obtain the paintings of a hypothetical artist called Artist Name, append the following chunk of code to the build_paths defintion. 
 
     ```python
     if number == 3:
-        FOLDER_NAME = "ivan-shishkin"
-        SHORT_NAME = "shishkin"
+        FOLDER_NAME = "artist-name"
+        SHORT_NAME = "name"
     ```
 
     In the code above, the FOLDER_NAME value is the artist's full name, lowercased and joined by hyphens. You can obtain the name from the WikiArt website. The SHORT_NAME variable should ideally be the artist's last name in lowercase. 
@@ -97,5 +97,4 @@ Although it is not necessary, I recommend that you use a code editor, such as [M
 
 ### References:
 
-* [Soviet Art Bot](https://github.com/veekaybee/soviet-art-bot)
 * [Building a Twitter Art Bot](http://veekaybee.github.io/2018/02/19/creating-a-twitter-art-bot/)
